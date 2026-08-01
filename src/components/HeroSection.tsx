@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import FadeIn from './FadeIn';
+import { heroData } from '../data/portfolio';
+import HeroBackground3D from './HeroBackground3D';
 
 const NAV_LINKS = [
   { label: 'About', href: '#about' },
@@ -10,6 +12,7 @@ const NAV_LINKS = [
 const HeroSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const audioRef = useRef<HTMLAudioElement>(null);
   const [muted, setMuted] = useState(true);
   const [showSoundHint, setShowSoundHint] = useState(true);
 
@@ -27,9 +30,9 @@ const HeroSection = () => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (!entry.isIntersecting) {
-          const v = videoRef.current;
-          if (v && !v.muted) {
-            v.muted = true;
+          const a = audioRef.current;
+          if (a && !a.paused) {
+            a.pause();
             setMuted(true);
           }
         }
@@ -77,10 +80,15 @@ const HeroSection = () => {
   }, []);
 
   const toggleMute = () => {
-    const v = videoRef.current;
-    if (!v) return;
-    v.muted = !v.muted;
-    setMuted(v.muted);
+    const a = audioRef.current;
+    if (!a) return;
+    if (muted) {
+      a.currentTime = 0;
+      a.play();
+    } else {
+      a.pause();
+    }
+    setMuted(!muted);
     setShowSoundHint(false);
   };
 
@@ -94,10 +102,16 @@ const HeroSection = () => {
         loop
         playsInline
         preload="auto"
-        className="absolute inset-0 h-full w-full object-cover"
+        className="absolute inset-0 h-full w-full object-cover opacity-40"
       >
         <source src="/intro.mp4" type="video/mp4" />
       </video>
+
+      {/* Three.js 3D Background */}
+      <HeroBackground3D />
+
+      {/* Custom TTS audio */}
+      <audio ref={audioRef} src="/intro_audio.m4a" loop />
 
       {/* Cinematic gradient overlays */}
       <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/35 to-black/40" />
@@ -130,27 +144,27 @@ const HeroSection = () => {
           </div>
         </FadeIn>
 
-        {/* Middle-left: PORTFOLIO + Name + Subtitle */}
-        <div className="flex flex-1 items-center">
-          <div className="w-full max-w-7xl px-6 md:px-10">
+        {/* Center: PORTFOLIO + Name + Subtitle */}
+        <div className="flex flex-1 items-center justify-center text-center">
+          <div className="w-full max-w-7xl px-6 md:px-10 flex flex-col items-center">
             <FadeIn delay={0.3} y={20}>
               <p className="mb-4 text-[10px] sm:text-xs font-medium uppercase tracking-[0.35em] text-white/60">
-                Portfolio · 2026
+                Portfolio · {heroData.portfolioYear}
               </p>
             </FadeIn>
 
             <FadeIn delay={0.5} y={40}>
               <h1
-                className="font-black uppercase leading-[0.88] tracking-tight text-white"
+                className="font-black uppercase leading-[0.88] tracking-tight bg-gradient-to-b from-white via-white to-white/40 bg-clip-text text-transparent drop-shadow-2xl pb-4"
                 style={{ fontSize: 'clamp(3rem, 12vw, 10.5rem)' }}
               >
-                Harsh<br />Goyal
+                {heroData.firstName} <span className="text-white/70">{heroData.lastName}</span> 🚀
               </h1>
             </FadeIn>
 
             <FadeIn delay={0.85} y={20}>
               <p className="mt-5 md:mt-7 text-[10px] sm:text-xs md:text-sm font-medium uppercase tracking-[0.3em] text-white/75">
-                Developer · Designer · GenAI Integration
+                {heroData.subtitle}
               </p>
             </FadeIn>
           </div>

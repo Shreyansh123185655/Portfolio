@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import FadeIn from './FadeIn';
 import LiveProjectButton from './LiveProjectButton';
+import { projectsData } from '../data/portfolio';
 
 interface ProjectData {
   number: string;
@@ -13,44 +14,6 @@ interface ProjectData {
   col2Image: string;
 }
 
-const PROJECTS: ProjectData[] = [
-    {
-        number: '01',
-        category: 'Personal',
-        name: 'Forge',
-        liveUrl: 'https://forge-pink-seven.vercel.app/',
-        col1Image1: '/Forge.png',
-        col1Image2: '/Forge1.png',
-        col2Image: '/Forge2.png',
-      },
-  {
-      number: '02',
-      category: 'Personal',
-      name: 'LawLab',
-      liveUrl: 'https://lawlab-self.vercel.app',
-      col1Image1: '/lawlab.png',
-      col1Image2: '/lawlab1.png',
-      col2Image: '/lawlab2.png',
-    },
-  {
-    number: '03',
-    category: 'Personal · GenAI',
-    name: 'ResumeIQ',
-    liveUrl: 'https://resumeiq-harsh.vercel.app/',
-    col1Image1: '/resumeiq-hero.png',
-    col1Image2: '/resumeiq-feedback.png',
-    col2Image: '/resumeiq-score.png',
-  },
-  {
-    number: '04',
-    category: 'Personal · Design',
-    name: 'Notch',
-    liveUrl: 'https://notch-zeta.vercel.app/',
-    col1Image1: '/notch-hero.png',
-    col1Image2: '/notch-pricing.png',
-    col2Image: '/notch-mockup.png',
-  },
-];
 
 interface ProjectCardProps {
   project: ProjectData;
@@ -178,12 +141,12 @@ const ProjectsSection = () => {
       </FadeIn>
 
       <div ref={containerRef} className="mx-auto max-w-7xl">
-        {PROJECTS.map((project, i) => (
+        {projectsData.map((project, i) => (
           <ProjectCard
             key={project.number}
             project={project}
             index={i}
-            total={PROJECTS.length}
+            total={projectsData.length}
             containerRef={containerRef}
           />
         ))}

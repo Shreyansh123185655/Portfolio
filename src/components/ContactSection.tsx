@@ -1,40 +1,6 @@
-import { Mail, MessageCircle, Linkedin, Github, ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import FadeIn from './FadeIn';
-
-interface ContactMethod {
-  icon: typeof Mail;
-  label: string;
-  value: string;
-  href: string;
-}
-
-const CONTACT_METHODS: ContactMethod[] = [
-  {
-    icon: Mail,
-    label: 'Email',
-    value: 'goyalharsh642@gmail.com',
-    href: 'mailto:goyalharsh642@gmail.com',
-  },
-  {
-    icon: MessageCircle,
-    label: 'WhatsApp',
-    value: '+91 81682 94032',
-    // wa.me requires digits only — no +, no spaces, no hyphens
-    href: 'https://wa.me/918168294032',
-  },
-  {
-    icon: Linkedin,
-    label: 'LinkedIn',
-    value: 'in/harsh-goyal-7900b2256',
-    href: 'https://www.linkedin.com/in/harsh-goyal-7900b2256/',
-  },
-  {
-    icon: Github,
-    label: 'GitHub',
-    value: '@harshgoyal27',
-    href: 'https://github.com/harshgoyal27',
-  },
-];
+import { contactData, siteMeta } from '../data/portfolio';
 
 const ContactSection = () => {
   return (
@@ -63,7 +29,7 @@ const ContactSection = () => {
 
       {/* Contact cards */}
           <div className="mx-auto grid max-w-5xl grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 md:gap-6">
-        {CONTACT_METHODS.map((method, i) => {
+        {contactData.map((method, i) => {
           const Icon = method.icon;
           const isExternal = method.href.startsWith('http');
 
@@ -117,13 +83,13 @@ const ContactSection = () => {
             className="font-light uppercase tracking-widest text-[#D7E2EA]/50"
             style={{ fontSize: 'clamp(0.7rem, 1.1vw, 0.9rem)' }}
           >
-            © 2026 Harsh Goyal
+            © {siteMeta.copyrightYear} {siteMeta.copyrightName}
           </span>
           <span
             className="font-light uppercase tracking-widest text-[#D7E2EA]/50"
             style={{ fontSize: 'clamp(0.7rem, 1.1vw, 0.9rem)' }}
           >
-            Designed & built in Delhi
+            Designed & built in {siteMeta.location}
           </span>
         </div>
       </FadeIn>

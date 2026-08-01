@@ -1,9 +1,7 @@
 import FadeIn from './FadeIn';
 import ContactButton from './ContactButton';
 import AnimatedText from './AnimatedText';
-
-const ABOUT_TEXT =
-  "I'm a Computer Science graduate from NSUT, currently a Content R&D Trainee at PhysicsWallah, where I help ship live, customer-facing learning products. I focus on UI/UX, front-end development, and GenAI integration — turning rough ideas into clean, engaging digital experiences. Let's build something incredible together!";
+import { aboutData } from '../data/portfolio';
 
 const AboutSection = () => {
   return (
@@ -89,7 +87,7 @@ const AboutSection = () => {
 
           <div className="flex flex-col items-center gap-12 sm:gap-16 md:gap-20">
                     <AnimatedText
-                      text={ABOUT_TEXT}
+                      text={aboutData.text}
                       className="font-medium leading-relaxed text-[#D7E2EA] max-w-[560px]"
                       style={{ fontSize: 'clamp(1rem, 2vw, 1.35rem)' }}
                     />
@@ -97,24 +95,7 @@ const AboutSection = () => {
                     {/* Skills */}
                     <FadeIn delay={0.15} className="w-full max-w-3xl">
                       <div className="flex flex-col gap-5 sm:gap-6">
-                        {[
-                          {
-                            label: 'Languages',
-                            items: ['Python', 'JavaScript', 'HTML', 'CSS', 'SQL'],
-                          },
-                          {
-                            label: 'Frameworks & Libraries',
-                            items: ['React', 'Tailwind', 'Pandas', 'NumPy', 'Scikit-learn', 'NLTK'],
-                          },
-                          {
-                            label: 'Tools & Platforms',
-                            items: ['Figma', 'Vercel', 'Git', 'GitHub', 'Power BI', 'Canva', 'Excel'],
-                          },
-                          {
-                            label: 'AI & GenAI',
-                            items: ['Gemini', 'Claude', 'OpenAI', 'Prompt engineering'],
-                          },
-                        ].map((group) => (
+                        {aboutData.skills.map((group) => (
                           <div
                             key={group.label}
                             className="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-5"

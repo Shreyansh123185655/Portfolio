@@ -1,38 +1,5 @@
 import FadeIn from './FadeIn';
-
-
-const SERVICES = [
-  {
-    number: '01',
-    title: 'UI/UX Design',
-    description:
-      'Designing clean, intuitive interfaces that prioritise user flow, hierarchy, and visual clarity — turning ideas into experiences people actually enjoy using.',
-  },
-  {
-    number: '02',
-    title: 'Front-end Development',
-    description:
-      'Building responsive, performant web apps with React, TypeScript, and Tailwind — pixel-perfect on every screen, deployed seamlessly on Vercel.',
-  },
-  {
-    number: '03',
-    title: 'GenAI Integration',
-    description:
-      'Wiring large language models into real products via Gemini, Claude, and OpenAI APIs — from resume reviewers to AI tutors and beyond.',
-  },
-  {
-    number: '04',
-    title: 'Prompt Engineering & LLM Automation',
-    description:
-      'Crafting reliable prompts and automation flows that turn LLMs into production-grade tools for content, analysis, and decision support.',
-  },
-  {
-    number: '05',
-    title: 'Data Analysis & Visualization',
-    description:
-      'Exploring datasets with Python (Pandas, NumPy, Seaborn) and Power BI — turning raw numbers into clear insights and dashboards stakeholders can act on.',
-  },
-];
+import { servicesData } from '../data/portfolio';
 
 const ServicesSection = () => {
   return (
@@ -50,13 +17,13 @@ const ServicesSection = () => {
       </FadeIn>
 
       <div className="mx-auto max-w-5xl">
-        {SERVICES.map((service, i) => (
+        {servicesData.map((service, i) => (
           <FadeIn key={service.number} delay={i * 0.1} y={30}>
             <div
               className="flex flex-row items-start gap-6 sm:gap-10 md:gap-14 py-8 sm:py-10 md:py-12"
               style={{
                 borderTop: '1px solid rgba(12, 12, 12, 0.15)',
-                ...(i === SERVICES.length - 1
+                ...(i === servicesData.length - 1
                   ? { borderBottom: '1px solid rgba(12, 12, 12, 0.15)' }
                   : {}),
               }}
