@@ -1,8 +1,10 @@
-# Harsh Goyal — Developer & Designer Portfolio
+# Shreyansh Gupta — Full-Stack & ML Engineer Portfolio
 
-A dark-themed personal portfolio for **Harsh Goyal** — Computer Science graduate from NSUT, currently a Content R&D Trainee at PhysicsWallah. Focused on UI/UX, front-end development, and GenAI integration.
+🚀 **Live:** [portfolio-orpin-five-88.vercel.app](https://portfolio-orpin-five-88.vercel.app)
 
-Built with **React + TypeScript + Vite + Tailwind CSS + Framer Motion**. Designed for one-click deployment on **Vercel**.
+A dark-themed, premium personal portfolio for **Shreyansh Gupta** — B.Tech Computer Science student at Manipal University Jaipur, skilled in Full-Stack Development, Machine Learning, and Backend Engineering.
+
+Built with **React + TypeScript + Vite + Tailwind CSS + Framer Motion + Three.js**.
 
 ## Stack
 
@@ -10,15 +12,16 @@ Built with **React + TypeScript + Vite + Tailwind CSS + Framer Motion**. Designe
 - Vite (build tool)
 - Tailwind CSS (utility-first styling)
 - Framer Motion (animations + scroll effects)
+- Three.js / React Three Fiber (3D particle background)
 - Lucide React (icons)
 - Kanit font (Google Fonts, weights 300–900)
 
 ## Sections
 
-1. **Hero** — name, tagline, magnetic-hover portrait
-2. **About** — bio + skills grouped by Languages / Frameworks / Tools / AI
-3. **Services** — UI/UX Design, Web Design, Front-end Development, GenAI Integration
-4. **Projects** — sticky-stacking cards for AI Tutor, PiLearn, ResumeIQ, Notch
+1. **Hero** — 3D particle field background, cinematic name reveal, custom audio intro
+2. **About** — bio + skills grouped by Languages / Backend & Databases / Tools & DevOps / Machine Learning
+3. **Services** — Full-Stack Development, Backend Engineering, ML & AI, Database & Data Pipelines
+4. **Projects** — sticky-stacking cards for UrbanPulse, StockSense, DocMind, Parental Insight
 5. **Contact** — Email, WhatsApp, LinkedIn, GitHub
 
 ## Run locally
@@ -32,49 +35,58 @@ npm run preview  # serve /dist locally
 
 ## Deploy to Vercel
 
-Push to GitHub → import the repo at [vercel.com/new](https://vercel.com/new) → click Deploy. No environment variables needed.
+```bash
+npx vercel --prod --yes
+```
+
+Or push to GitHub → import the repo at [vercel.com/new](https://vercel.com/new) → click Deploy. No environment variables needed.
 
 ## Project structure
 
 ```
 src/
-├── App.tsx                    # composes all sections
-├── main.tsx                   # React entry
-├── index.css                  # global styles + .hero-heading gradient
+├── App.tsx                       # composes all sections
+├── main.tsx                      # React entry
+├── index.css                     # global styles + .hero-heading gradient
+├── data/
+│   └── portfolio.ts              # ✨ ALL portfolio data in one file
 └── components/
-    ├── HeroSection.tsx        # navbar, massive heading, magnetic portrait
-    ├── AboutSection.tsx       # bio, animated text, skills grid
-    ├── ServicesSection.tsx    # white section, 4 numbered services
-    ├── ProjectsSection.tsx    # sticky-stacking project cards
-    ├── ContactSection.tsx     # 4 contact methods with icons
+    ├── HeroSection.tsx           # navbar, 3D background, audio, heading
+    ├── HeroBackground3D.tsx      # Three.js particles + wireframe shapes
+    ├── AboutSection.tsx          # bio, animated text, skills grid
+    ├── ServicesSection.tsx       # white section, numbered services
+    ├── ProjectsSection.tsx       # sticky-stacking project cards
+    ├── ContactSection.tsx        # 4 contact methods with icons
     │
-    ├── ContactButton.tsx      # gradient pill CTA
-    ├── LiveProjectButton.tsx  # ghost outline pill
-    ├── FadeIn.tsx             # whileInView animation wrapper
-    ├── Magnet.tsx             # mouse-following magnetic hover
-    └── AnimatedText.tsx       # char-by-char scroll-driven reveal
+    ├── ContactButton.tsx         # gradient pill CTA
+    ├── LiveProjectButton.tsx     # ghost outline pill
+    ├── FadeIn.tsx                # whileInView animation wrapper
+    ├── Magnet.tsx                # mouse-following magnetic hover
+    └── AnimatedText.tsx          # char-by-char scroll-driven reveal
 ```
 
 ## Featured projects
 
-| Project | Live | Built with |
-|---|---|---|
-| ResumeIQ | [resumeiq-harsh.vercel.app](https://resumeiq-harsh.vercel.app) | React, Gemini API, Vercel |
-| Notch | [notch-zeta.vercel.app](https://notch-zeta.vercel.app) | React, Tailwind, Framer Motion |
+| # | Project | Category | Tech |
+|---|---|---|---|
+| 01 | **UrbanPulse** — Smart City Platform | Full-Stack · Microservices · IoT | FastAPI, React, Kafka, PostGIS, Docker |
+| 02 | **StockSense** — CNN-Transformer Predictor | Machine Learning · Deep Learning | Python, TensorFlow, scikit-learn |
+| 03 | **DocMind** — PDF Q&A RAG Chatbot | GenAI · NLP · RAG | Python, FAISS, Streamlit, Hugging Face |
+| 04 | **Parental Insight Application** | Full-Stack · Analytics | Tailwind CSS, Supabase |
 
 ## Customisation
 
-| Want to change | Open this file |
+All portfolio data is centralized in one file: **`src/data/portfolio.ts`**
+
+| Want to change | Edit this section in `portfolio.ts` |
 |---|---|
-| Name, nav links, hero text | `src/components/HeroSection.tsx` |
-| About paragraph, skills list | `src/components/AboutSection.tsx` |
-| Services list | `src/components/ServicesSection.tsx` (`SERVICES` array) |
-| Projects, screenshots, live URLs | `src/components/ProjectsSection.tsx` (`PROJECTS` array) |
-| Contact methods | `src/components/ContactSection.tsx` (`CONTACT_METHODS` array) |
-| Project screenshots | drop new images in `public/` and reference as `/filename.png` |
-| Brand gradient, font, dark colour | `src/index.css` and `tailwind.config.js` |
-| Page title, meta description | `index.html` |
+| Name, subtitle, hero text | `heroData` |
+| About paragraph, skills list | `aboutData` |
+| Services list | `servicesData` |
+| Projects, screenshots, live URLs | `projectsData` |
+| Contact methods | `contactData` |
+| Copyright, location | `siteMeta` |
 
 ## Credits
 
-Designed & built by **Harsh Goyal** · [LinkedIn](https://www.linkedin.com/in/harsh-goyal-7900b2256/) · [GitHub](https://github.com/harshgoyal27)
+Designed & built by **Shreyansh Gupta** · [LinkedIn](https://www.linkedin.com/in/shreyansh-gupta-a9a6372b1/) · [GitHub](https://github.com/Shreyansh123185655)
